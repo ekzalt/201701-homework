@@ -30,10 +30,46 @@ function showBigger(n) {
 
 /////////////////////////////////////////////////////////
 
+// проход по массиву с конца на i++
 
+/*
+for (var i = 0; i < arr.length; i++) {
+  arr[(arr.length - 1) - i];
+}
+*/
 
+// выводим четные И не ноль
 
+/*
+if (arr[i] % 2 === 0 && arr[i] !== 0) {};
+*/
 
+// не выводим отрицательные
+
+/*
+if (arr[i] < 0) {};
+*/
+
+// matrix
+
+/*
+function randNum(min, max) {
+  return Math.floor(min + Math.random() * ((max + 1) - min));
+}
+
+var arrSize = 10
+var martix = [];
+
+for (var i = 0; i < arrSize; i++) {
+  martix[i] = [];
+  for (var j = 0; j < arrSize; j++) {
+    martix[i][j] = randNum(0, 100);
+  } 
+}
+console.table(martix);
+*/
+
+/////////////////////////////////////////////////////////
 
 
 
