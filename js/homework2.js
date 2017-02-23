@@ -1,3 +1,4 @@
+'use strict';
 
 /////////////////////////////////////////////////////////
 
@@ -10,7 +11,7 @@
 // создание случайного числа
 
 function randNum(min, max) {
-  return Math.floor(min + Math.random() * ((max + 1) - min));
+  return Math.floor(min + Math.random() * (max + 1 - min));
 }
 
 // создание матрицы
@@ -23,7 +24,8 @@ function buildMatrix(heightArr, withArr) {
     
     for (var j = 0; j < withArr; j++) {
       matrixArr[i][j] = randNum(0, 100);
-	  // то же самое через "пуш"
+	  
+	  // то же самое через .push()
 	  // matrixArr[i].push( randNum(0, 100) );
     }
   }
@@ -56,6 +58,9 @@ function showClock(arr) {
     right.push(arr[i][arr.length - 1]);
 	// left требует реверса
 	left.push(arr[i][0]);
+	
+	// вариант left без реверса
+	// left.push(arr[arr.length - 1 - i][0]);
   }
   
   perimeter = top.concat(right, bottom, left.reverse());
@@ -87,6 +92,10 @@ function showClockReverse(arr) {
   for (var i = 0; i < arr.length; i++) {
     // right требует реверса
 	right.push(arr[i][arr.length - 1]);
+	
+	// вариант right без реверса
+	// right.push(arr[arr.length - 1 - i][arr.length - 1]);
+	
 	left.push(arr[i][0]);
   }
   
