@@ -71,7 +71,7 @@ bomb('BOOM!!!');
 function iter() {
   for (var i = 1; i <= 10; i++) {
     (function(index) {
-	  setTimeout(function() {	  
+	  setTimeout(function() {
 	    console.log(index);
       }, 1000 * i);
 	})(i);
@@ -95,25 +95,3 @@ function iter() {
 iter();
 
 // Итог: 1, 2, 3...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

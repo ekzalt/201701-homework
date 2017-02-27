@@ -173,6 +173,121 @@ clearInterval(1);
 
 //////////////////////////////////////////////////////////////////////////////////
 
+// Рекурсия
+
+/*
+// Рекурсивое суммирование - вариант 1
+function sumTo(x) {
+  if (x >= 1) {
+    return x + sumTo(x - 1);
+  } else {
+    return x;
+  }
+}
+sumTo(100);
+*/
+
+/*
+// Рекурсивое суммирование - вариант 2
+function sumTo(x) {
+  if (x < 1) {
+    return x;
+  } else {
+    return x + sumTo(x - 1);
+  }
+}
+sumTo(100);
+*/
+
+/////////////////////////////////////////
+
+// function pow(x, n) {
+//   var result = x;
+//   for (var i = 1; i < n; i++) {
+//     result *= x;
+//   }
+//   return result;
+// }
+
+// console.time('церез цикл');
+// pow(2, 50);
+// console.timeEnd('церез цикл');
+
+//////////////////////////////////////////
+
+/*
+// древовидный объект
+var user = {
+  name: 'Vasya Pupkin',
+  children: [{
+    name: 'Maria Pupkin',
+    children: [{
+      name: 'Petrik Pupkin',
+      children: []
+    }]
+  }, {
+    name: 'Fedor Pupkin',
+    children: [{
+      name: 'Vasya Pupkin Jr.',
+      children: []
+    }, {
+      name: 'Mihail Pupkin',
+      children: []
+    }]
+  }]
+};
+*/
+
+// рекурсивный обход - вариант 1
+// var results = [];
+
+// function getName(obj) {
+//   if ('name' in obj) {
+//     results.push(obj.name);
+//   } else if (obj.children && obj.children.length) {
+//     for (var i = 0; i < obj.children.length; i++) {
+//       getName(obj.children[i]);
+//     }
+//   }
+// }
+// getName(user);
+// results;
+
+/*
+// рекурсивный обход - вариант 2
+var results = [];
+
+function getName(obj) {
+  for (var key in obj) {
+    if (key === 'name') {
+      results.push(obj.name);
+    } else if (obj.children && obj.children.length) {
+      for (var i = 0; i < obj.children.length; i++) {
+        getName(obj.children[i]);
+      }
+    }
+  }
+}
+getName(user);
+results;
+*/
+
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
