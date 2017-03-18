@@ -856,9 +856,9 @@ function Machine() {
 function CoffeeMachine(power, maxWater) {
   Machine.call(this);
 
-	var oldEnable = this.enable;
-	var oldDisable = this.disable;
-	//var self = this;
+  var oldEnable = this.enable;
+  var oldDisable = this.disable;
+  //var self = this;
   var waterAmount = 0;
   var WATER_HEAT_CAPACITY = 4200;
   var timerId;
@@ -867,10 +867,15 @@ function CoffeeMachine(power, maxWater) {
     return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
   }
 
-  // onReady переделал для удобства в Function Expression
-  var onReady = function() { alert('Кофе готов!'); };
+  // Сохранил дефолтную версию onReady
+  var onReadyDefault = function() {
+    alert('Кофе готов!');
+  };
 
-  this.waterAmount = function (value) {
+  // onReady переделал для удобства в Function Expression
+  var onReady = onReadyDefault;
+
+  this.waterAmount = function(value) {
     if (!value) {
       return waterAmount;
     }
@@ -884,11 +889,11 @@ function CoffeeMachine(power, maxWater) {
 
   // закос под полиморфизм :)
   this.programReadyState = function(fn) {
-  	if (typeof(fn) === 'function') {
+    if (typeof(fn) === 'function') {
       onReady = fn;
       console.log('Пользовательские настройки активированы!');
     } else if (!arguments.length) {
-      onReady = function() { alert('Кофе готов!'); };
+      onReady = onReadyDefault;
       console.log('Пользовательские настройки сброшены, стандартные настройки активированы!');
     } else {
       console.log('Неверный аргумент!');
@@ -899,7 +904,7 @@ function CoffeeMachine(power, maxWater) {
   this.run = function() {
     if (this._enabled) {
       var time = getBoilTime();
-      console.log(time / (1000 * 60) + ' мин.' );
+      console.log(time / (1000 * 60) + ' мин.');
       timerId = setTimeout(onReady, time);
     } else {
       console.log('Сначала надо включить!');
