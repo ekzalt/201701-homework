@@ -51,8 +51,11 @@ f.defer(2000);
 Т.е. у лошади из данного примера остаточная усталость будет равна 5.
  */
 
+////////////////////////////
+
 // сделал себе кучу console.log() для отслеживания состояния
 
+/*
 function Horse(name) {
   this.name = name;
   this.mileage = 0;
@@ -96,3 +99,109 @@ Horse.prototype.run = function(n) {
 };
 
 var h1 = new Horse('Rose');
+h1.run(15);
+*/
+
+////////////////////////////
+
+// переделал .run(n) : 1) вынес из анонимной функции в setTimeout в именнную, 2) "забиндил", чтоб избавиться от "self"
+
+/*
+function Horse(name) {
+  this.name = name;
+  this.mileage = 0;
+  this.tired = 0;
+}
+
+Horse.prototype.run = function(n) {
+  var totalDistance = n;
+  var distance = 0;
+
+  var restAndRun = function() {
+    this.tired = 0;
+    console.log('я отдохнула, усталость: ' + this.tired);
+
+    console.log('еще бежать: ' + (totalDistance - distance));
+
+    console.log('я побежала');
+    this.run(totalDistance - distance);
+  };
+
+  restAndRun = restAndRun.bind(this);
+
+  while (distance <= totalDistance) {
+    // от себя добавил, что если дистанция закончилась на счетчике "усталости" 10, то лошадь сначала отдыхает, а потом прекращает действовать
+    if (this.tired !== 10 && distance === totalDistance) {
+      console.log('я пробежала всю дистанцию');
+      return;
+    }
+
+    if (this.tired === 10) {
+      console.log('я устала: ' + this.tired);
+      break;
+    }
+
+    distance++;
+    this.tired++;
+    this.mileage++;
+    console.log('пробежала: ' + distance + ', всего: ' + this.mileage + ', устала: ' + this.tired);
+  }
+
+  console.log('отдыхаю: 3сек.');
+  setTimeout(restAndRun, 3000);
+};
+
+var h1 = new Horse('Rose');
+h1.run(15);
+*/
+
+////////////////////////////
+
+// переделал в ES6
+
+class Horse {
+  constructor(name) {
+    this.name = name;
+    this.mileage = 0;
+    this.tired = 0;
+  }
+  
+  run(n) {
+    let totalDistance = n;
+    let distance = 0;
+
+    const restAndRun = () => {
+      this.tired = 0;
+      console.log('я отдохнула, усталость: ' + this.tired);
+
+      console.log('еще бежать: ' + (totalDistance - distance));
+
+      console.log('я побежала');
+      this.run(totalDistance - distance);
+    };
+
+    while (distance <= totalDistance) {
+      // от себя добавил, что если дистанция закончилась на счетчике "усталости" 10, то лошадь сначала отдыхает, а потом прекращает действовать
+      if (this.tired !== 10 && distance === totalDistance) {
+        console.log('я пробежала всю дистанцию');
+        return;
+      }
+
+      if (this.tired === 10) {
+        console.log('я устала: ' + this.tired);
+        break;
+      }
+
+      distance++;
+      this.tired++;
+      this.mileage++;
+      console.log('пробежала: ' + distance + ', всего: ' + this.mileage + ', устала: ' + this.tired);
+    }
+
+    console.log('отдыхаю: 3сек.');
+    setTimeout(restAndRun, 3000);
+  }
+}
+
+let h1 = new Horse('Rose');
+h1.run(15);
