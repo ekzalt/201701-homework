@@ -1,0 +1,23 @@
+{
+  "name": "001_homework",
+  "version": "12.0.0",
+  "description": "javaScript homeWorks",
+  "main": "index.js",
+  "scripts": {
+    "test": "test0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekzalt/201701-homework.git"
+  },
+  "keywords": [
+    "javascript",
+    "js"
+  ],
+  "author": "Alexander Zakharov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ekzalt/201701-homework/issues"
+  },
+  "homepage": "https://github.com/ekzalt/201701-homework#readme"
+}

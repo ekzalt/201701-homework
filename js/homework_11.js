@@ -20,6 +20,7 @@
 
 ////////////////////////////////////
 
+/*
 let wrap = document.querySelector('.wrapper');
 
 const makeMenu = wrap => {
@@ -63,5 +64,27 @@ const action = e => {
 };
 
 document.addEventListener('click', action);
+*/
 
-// все работает
+////////////////////////////////////
+
+// ДЗ 2 - кастомный селект
+
+const doSelect = e => {
+  let select = document.querySelector('.customSelect');
+  let btn = select.querySelector('.customSelectBtn');
+  let ul = select.querySelector('ul');
+
+  if (e.target === btn) {
+    ul.classList.toggle('hide');
+
+  } else if (select.contains(e.target) && e.target.closest('li')) {
+    btn.textContent = e.target.textContent;
+    ul.classList.add('hide');
+
+  } else {
+    ul.classList.add('hide');
+  }
+};
+
+document.addEventListener('click', doSelect);

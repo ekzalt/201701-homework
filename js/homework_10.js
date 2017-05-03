@@ -58,6 +58,7 @@ wrapper.append(tab(10, 10));
 
 // ДЗ 3 - таблица 10х10 через innerHTML
 
+/*
 const random = (min, max) => Math.floor(min + Math.random() * (max + 1 - min));
 
 let wrapper = document.querySelector('.wrapper');
@@ -89,3 +90,55 @@ for (let td of tds) {
   if (td.parentElement.sectionRowIndex % 2 !== 0 &&
       td.cellIndex % 2 !== 0) td.style.background = 'lightgrey';
 }
+*/
+
+////////////////////////////////////
+
+// ДЗ 4 - таблица 10х10
+
+
+const random = (min, max) => Math.floor(min + Math.random() * (max + 1 - min));
+
+const tab = (rows, cols) => {
+  let table = document.createElement('table');
+  let tbody = document.createElement('tbody');
+  
+  for (let i = 0; i < rows; i++) {
+    let tr = document.createElement('tr');
+      
+    for (let j = 0; j < cols; j++) {
+      let td = document.createElement('td');
+      
+      // if (i % 2 === 0 && j % 2 === 0) td.style.background = 'lightgrey';
+      // if (i % 2 !== 0 && j % 2 !== 0) td.style.background = 'lightgrey';
+      td.style.background = `rgb(${random(1, 255)}, ${random(1, 255)}, ${random(1, 255)})`;
+
+      td.textContent = random(10, 99);
+      td.style.left = td.getBoundingClientRect().left + 'px';
+      tr.append(td);
+    }
+    tbody.append(tr);
+  }
+  
+  table.append(tbody);
+  
+  return table;
+};
+
+let wrapper = document.querySelector('.wrapper');
+wrapper.append(tab(10, 10));
+
+let tds = wrapper.querySelectorAll('td');
+
+const styleAbs = list => {
+  for (let item of list) {
+    item.style.left = item.getBoundingClientRect().left  + pageXOffset+ 'px';
+    item.style.top = item.getBoundingClientRect().top + pageYOffset + 'px';
+  }
+
+  for (let item of list) {
+    item.style.position = 'absolute';
+  }
+};
+
+styleAbs(tds);

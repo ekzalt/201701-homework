@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+header {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+main {
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  background-color: #09c;
+  padding: 20px;
+}
+
+h1::before {
+  content: "";
+  width: 76px;
+  height: 76px;
+  background: url(img/ships/s3.png) no-repeat 50% 50%;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 20px;
+}
+
+h1::after {
+  content: "";
+  width: 76px;
+  height: 76px;
+  background: url(img/ships/s4.png) no-repeat 50% 50%;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+.message {
+  color: #09c;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #09c;
+  margin: 0 20px 40px 20px;
+  border-radius: 5px;
+}
+
+.board {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.topNums {
+  text-align: center;
+  font-size: 0;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  margin-left: -104px;
+}
+
+.leftNums {
+  font-size: 0;
+  width: 21px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -125px;
+}
+
+.topNums span,
+.leftNums span {
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  color: #09c;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  opacity: 0.2;
+}
+
+.field {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.field td {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #09c;
+}
+
+form {
+  font-size: 0;
+  width: 109px;
+  margin: 0 auto 40px auto;
+}
+
+input[name="target"] {
+  width: 30px;
+  height: 20px;
+  font-size: 16px;
+  border: 1px solid #09c;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+button[name="fire"] {
+  background: #09c;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #fff;
+  height: 32px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[name="fire"]:hover {
+  background: #f90;
+}
+
+button[name="fire"]:active {
+  background: #f30;
+}
+
+/*
+.miss {
+  background: url(img/miss/m0.jpg) no-repeat 50% 50%;
+  background-size: contain;
+}
+
+.hit {
+  background: url(img/ships/s0.png) no-repeat 50% 50%;
+  background-size: contain;
+}
+*/
+
+/* @media */
+
+@media only screen and (min-width: 481px) {
+  header {
+    margin-bottom: 40px;
+  }
+
+  .message {
+    margin-bottom: 50px;
+  }
+
+  .topNums {
+    top: -30px;
+    margin-left: -206px;
+  }
+
+  .leftNums {
+    top: 12px;
+    margin-left: -246px;
+  }
+
+  .topNums span,
+  .leftNums span {
+    width: 41px;
+    height: 41px;
+  }
+
+  .field td {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .message {
+    margin-bottom: 60px;
+  }
+
+  .topNums {
+    margin-left: -306px;
+  }
+
+  .leftNums {
+    top: 20px;
+    margin-left: -360px;
+  }
+
+  .topNums span,
+  .leftNums span {
+    width: 61px;
+    height: 61px;
+  }
+
+  .field td {
+    width: 60px;
+    height: 60px;
+  }
+}
